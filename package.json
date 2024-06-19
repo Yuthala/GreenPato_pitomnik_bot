@@ -1,0 +1,20 @@
+{
+  "name": "zaryadiumbot",
+  "version": "1.0.0",
+  "description": "Данный бот предназначен для помощи поьзователям приложения Zaryadium",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js",
+    "dev" : "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.2",
+    "telegraf": "^4.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
