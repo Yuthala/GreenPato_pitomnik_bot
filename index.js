@@ -1,7 +1,7 @@
 const { Telegraf, Markup } = require('telegraf')
 //const { message } = require('telegraf/filters')
 require('dotenv').config()
-const text = require('./const')
+const msgsText = require('./const')
 
 // Общие настройки
 let config = {
@@ -47,13 +47,8 @@ bot.command('start', async (ctx) => {
         setTimeout(async()=> {
             await ctx.reply('Какой вопрос вас интересует?', getMainMenu())
         }, 3500)
-        
-      
     } 
 )
-
-bot.command
-
 
 bot.help((ctx) => ctx.reply(text.commands))
 
@@ -152,30 +147,16 @@ function btn_2Action(name, text) {
             await ctx.reply(text)
             // msg 2
             setTimeout(async() => {   
-            await ctx.reply(`
-                Чеснок посадочный головками:
-    Калибр 6+: 570 р/кг
-    Калибр 4-6: 490 р/кг
-    Сорта: Любаша, Богатырь`)
-            }, 1000)
+            await ctx.reply(msgsText.btn_2Text_msg2)
+                }, 1000)
             //msg 3
             setTimeout(async() => {
-            await ctx.reply(`
-                Однозубок чеснока:
-    Крупный - 1 400 р/кг
-    Средний - 1 200 р/кг
-    Мелкий - 900 р/кг
-    Сорта: Любаша`)
-        }, 2000)
+            await ctx.reply(msgsText.btn_2Text_msg3)
+                 }, 2000)
             // msg 4
             setTimeout(async() => {
-            await ctx.reply(`
-                Воздушные луковицы (бульбочка):
-    Отборная - 3 500 р/кг
-    Калиброванная 5-8 мм - 3 000 р/кг
-    Сорта: Любаша, Богатырь, Шадейка, Григорий Комаров`,
-                 makeOrderButton())
-        }, 3000)
+            await ctx.reply(msgsText.btn_2Text_msg4, makeOrderButton())
+                }, 3000)
         } catch (e) {
             console.log(e)
         }
@@ -186,14 +167,12 @@ function btn_2Action(name, text) {
 function btn_3Action(name, text) {
     bot.action(name, async (ctx) => {
         try {
+                // msg 1
             await ctx.reply(text)
             setTimeout(async() => {
-            await ctx.reply(`
-            Семена (чернушка):
-    50 р/100 шт
-    Сорта: Ред Барон, Кармен, Штутгартер Ризен`,
-                 makeOrderButton())
-            }, 1000)
+                //msg 2
+            await ctx.reply(msgsText.btn_3Text_msg2, makeOrderButton())
+                }, 1000)
         } catch (e) {
             console.log(e)
         }
@@ -204,14 +183,11 @@ function btn_3Action(name, text) {
 function btn_4Action(name,text) {
     bot.action(name, async (ctx) => {
         try {
+                // msg 1
             await ctx.reply(text)
             setTimeout(async() => {
-            await ctx.reply(`
-            Шалот семена (чернушка):
-    200 р/100 шт
-    Сорта: Золотинка, Квочка, Изумруд
-`,
-                 makeOrderButton())
+                // msg 2
+            await ctx.reply(msgsText.btn_4Text_msg2, makeOrderButton())
             }, 1000)
         } catch (e) {
             console.log(e)
@@ -223,15 +199,12 @@ function btn_4Action(name,text) {
 function btn_5Action(name,text) {
     bot.action(name, async (ctx) => {
         try {
+                // msg 1
             await ctx.reply(text)
             setTimeout(async() => {
-            await ctx.reply(`
-Заказы отправляем курьерскими службами - Почта России, 5POST, Яндекс Доставка, СДЭК, Боксберри. 
-Подберем наиболее выгодный для вас способ доставки.
-Возможна отправка транспортной компанией.
-`,
-                 makeOrderButton())
-            }, 1000)
+                // msg 2
+            await ctx.reply(msgsText.btn_5Text_msg2, makeOrderButton())
+                }, 1000)
         } catch (e) {
             console.log(e)
         }
@@ -239,17 +212,17 @@ function btn_5Action(name,text) {
 }
 
 //addActionBot('btn_1',false, text.btn_1Text)
-btn_1Action('btn_1',text.btn_1Text)
+btn_1Action('btn_1',msgsText.btn_1Text)
 //addActionBot('btn_2',false, text.btn_2Text)
-btn_2Action(`btn_2`,text.btn_2Text)
+btn_2Action(`btn_2`,msgsText.btn_2Text)
 //addActionBot('btn_3',false, text.btn_3Text)
-btn_3Action('btn_3',text.btn_3Text)
+btn_3Action('btn_3',msgsText.btn_3Text)
 //addActionBot('btn_4',false, text.btn_4Text)
-btn_4Action('btn_4',text.btn_4Text)
+btn_4Action('btn_4',msgsText.btn_4Text)
 //addActionBot('btn_5',false, text.btn_5Text)
-btn_5Action('btn_5',text.btn_5Text)
-addActionBot('btn_6',false, text.btn_6Text)
-addActionBot('btn_7',false, text.btn_7Text)
+btn_5Action('btn_5',msgsText.btn_5Text)
+addActionBot('btn_6',false, msgsText.btn_6Text)
+addActionBot('btn_7',false, msgsText.btn_7Text)
 
 bot.launch()
 
