@@ -189,8 +189,27 @@ function btn_3Action(name, text) {
             setTimeout(async() => {
             await ctx.reply(`
             Семена (чернушка):
-                50 р/100 шт
-                Сорта: Ред Барон, Кармен, Штутгартер Ризен`,
+50 р/100 шт
+Сорта: Ред Барон, Кармен, Штутгартер Ризен`,
+                 makeOrderButton())
+            }, 1000)
+        } catch (e) {
+            console.log(e)
+        }
+    })
+}
+
+// Действие при нажатии четвертой кнопки "Шалот"
+function btn_4Action(name,text) {
+    bot.action(name, async (ctx) => {
+        try {
+            await ctx.reply(text)
+            setTimeout(async() => {
+            await ctx.reply(`
+            СШалот семена (чернушка):
+200 р/100 шт
+Сорта: Золотинка, Квочка, Изумруд
+`,
                  makeOrderButton())
             }, 1000)
         } catch (e) {
@@ -205,7 +224,8 @@ btn_1Action('btn_1',text.btn_1Text)
 btn_2Action(`btn_2`,text.btn_2Text)
 //addActionBot('btn_3',false, text.btn_3Text)
 btn_3Action('btn_3',text.btn_3Text)
-addActionBot('btn_4',false, text.btn_4Text)
+//addActionBot('btn_4',false, text.btn_4Text)
+btn_4Action('btn_4',text.btn_4Text)
 addActionBot('btn_5',false, text.btn_5Text)
 addActionBot('btn_6',false, text.btn_6Text)
 addActionBot('btn_7',false, text.btn_7Text)
