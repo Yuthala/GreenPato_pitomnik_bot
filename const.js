@@ -23,7 +23,8 @@ const btn_2Text = 'Возможно на карте не хватает сред
 const btn_3Text = 'Стоимость: до 5 минут - бесплатно, до 59 минут - 50₽, до конца суток - 150₽, каждые последующие сутки 200₽ '
 const btn_4Text = ''
 const btn_5Text = ''
-const btn_6Text = ''
+const btn_6Text = 'Для заказа напишете что вы хотите заказать. Мы проверим наличие и сообщим дальнейшие шаги.'
+const btn_7Text = ''
 
 
 
@@ -31,6 +32,7 @@ module.exports.commands = commands
 module.exports.btn_1Text = btn_1Text
 module.exports.btn_2Text = btn_2Text
 module.exports.btn_3Text = btn_3Text
-module.exports.btn_3Text = btn_4Text
-module.exports.btn_3Text = btn_5Text
-module.exports.btn_3Text = btn_6Text
+module.exports.btn_4Text = btn_4Text
+module.exports.btn_5Text = btn_5Text
+module.exports.btn_6Text = btn_6Text
+module.exports.btn_7Text = btn_7Text

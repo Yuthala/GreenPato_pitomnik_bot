@@ -100,10 +100,18 @@ bot.on('message', (ctx) => {
                 [Markup.button.callback('Лук', 'btn_3')],
                 [Markup.button.callback('Шалот', 'btn_4')],
                 [Markup.button.callback('Доставка и оплата', 'btn_5')],
-                [Markup.button.callback('Написать сообщение', 'btn_6')]
+                [Markup.button.callback('Сделать заказ', 'btn_6')],
+                [Markup.button.callback('Написать сообщение', 'btn_7')]
             ]
         )
     }
+
+// Функция вызова кнопки "Сделать заказ"
+function makeOrderButton() {
+    return Markup.inlineKeyboard(
+        [Markup.button.callback('Сделать заказ', 'btn_6')]
+    )
+}
 
 
 function addActionBot(name, src, text) {
@@ -123,12 +131,25 @@ function addActionBot(name, src, text) {
         }
     })
 }
-addActionBot('btn_1',false, text.btn_1Text)
+
+function btn_1Action(name,text) {
+bot.action(name, async (ctx) => {
+    try {
+        await ctx.reply(text, makeOrderButton())
+    } catch (e) {
+        console.log(e)
+    }
+})
+}
+
+//addActionBot('btn_1',false, text.btn_1Text)
+btn_1Action('btn_1',text.btn_1Text)
 addActionBot('btn_2',false, text.btn_2Text)
 addActionBot('btn_3',false, text.btn_3Text)
-addActionBot('btn_3',false, text.btn_4Text)
-addActionBot('btn_3',false, text.btn_5Text)
-addActionBot('btn_3',false, text.btn_6Text)
+addActionBot('btn_4',false, text.btn_4Text)
+addActionBot('btn_5',false, text.btn_5Text)
+addActionBot('btn_6',false, text.btn_6Text)
+addActionBot('btn_7',false, text.btn_7Text)
 
 bot.launch()
 
