@@ -6,7 +6,7 @@ const text = require('./const')
 // Общие настройки
 let config = {
     "token": "YOUR_TOKEN", // Токен бота
-    "admin": 573562828 // id владельца бота
+    "admin": 279152055 //573562828 // id владельца бота
 };
  
 // Текстовые настройки
@@ -67,7 +67,8 @@ bot.help((ctx) => ctx.reply(text.commands))
                 [Markup.button.callback('Лук', 'btn_3')],
                 [Markup.button.callback('Шалот', 'btn_4')],
                 [Markup.button.callback('Доставка и оплата', 'btn_5')],
-                [Markup.button.callback('Написать сообщение', 'btn_6')]
+                [Markup.button.callback('Сделать заказ', 'btn_6')],
+                [Markup.button.callback('Написать сообщение', 'btn_7')]
             ]
         ))
     
@@ -153,26 +154,26 @@ function btn_2Action(name, text) {
             setTimeout(async() => {   
             await ctx.reply(`
                 Чеснок посадочный головками:
-                Калибр 6+: 570 р/кг
-                Калибр 4-6: 490 р/кг
-                Сорта: Любаша, Богатырь`)
+    Калибр 6+: 570 р/кг
+    Калибр 4-6: 490 р/кг
+    Сорта: Любаша, Богатырь`)
             }, 1000)
             //msg 3
             setTimeout(async() => {
             await ctx.reply(`
                 Однозубок чеснока:
-                Крупный - 1 400 р/кг
-                Средний - 1 200 р/кг
-                Мелкий - 900 р/кг
-                Сорта: Любаша`)
+    Крупный - 1 400 р/кг
+    Средний - 1 200 р/кг
+    Мелкий - 900 р/кг
+    Сорта: Любаша`)
         }, 2000)
             // msg 4
             setTimeout(async() => {
             await ctx.reply(`
                 Воздушные луковицы (бульбочка):
-                Отборная - 3 500 р/кг
-                Калиброванная 5-8 мм - 3 000 р/кг
-                Сорта: Любаша, Богатырь, Шадейка, Григорий Комаров`,
+    Отборная - 3 500 р/кг
+    Калиброванная 5-8 мм - 3 000 р/кг
+    Сорта: Любаша, Богатырь, Шадейка, Григорий Комаров`,
                  makeOrderButton())
         }, 3000)
         } catch (e) {
@@ -189,8 +190,8 @@ function btn_3Action(name, text) {
             setTimeout(async() => {
             await ctx.reply(`
             Семена (чернушка):
-50 р/100 шт
-Сорта: Ред Барон, Кармен, Штутгартер Ризен`,
+    50 р/100 шт
+    Сорта: Ред Барон, Кармен, Штутгартер Ризен`,
                  makeOrderButton())
             }, 1000)
         } catch (e) {
@@ -206,9 +207,28 @@ function btn_4Action(name,text) {
             await ctx.reply(text)
             setTimeout(async() => {
             await ctx.reply(`
-            СШалот семена (чернушка):
-200 р/100 шт
-Сорта: Золотинка, Квочка, Изумруд
+            Шалот семена (чернушка):
+    200 р/100 шт
+    Сорта: Золотинка, Квочка, Изумруд
+`,
+                 makeOrderButton())
+            }, 1000)
+        } catch (e) {
+            console.log(e)
+        }
+    })
+}
+
+// Действия при нажатии пятой кнопки "Доставка и оплата"
+function btn_5Action(name,text) {
+    bot.action(name, async (ctx) => {
+        try {
+            await ctx.reply(text)
+            setTimeout(async() => {
+            await ctx.reply(`
+Заказы отправляем курьерскими службами - Почта России, 5POST, Яндекс Доставка, СДЭК, Боксберри. 
+Подберем наиболее выгодный для вас способ доставки.
+Возможна отправка транспортной компанией.
 `,
                  makeOrderButton())
             }, 1000)
@@ -226,7 +246,8 @@ btn_2Action(`btn_2`,text.btn_2Text)
 btn_3Action('btn_3',text.btn_3Text)
 //addActionBot('btn_4',false, text.btn_4Text)
 btn_4Action('btn_4',text.btn_4Text)
-addActionBot('btn_5',false, text.btn_5Text)
+//addActionBot('btn_5',false, text.btn_5Text)
+btn_5Action('btn_5',text.btn_5Text)
 addActionBot('btn_6',false, text.btn_6Text)
 addActionBot('btn_7',false, text.btn_7Text)
 
