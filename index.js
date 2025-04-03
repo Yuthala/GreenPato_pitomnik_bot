@@ -32,8 +32,29 @@ let forwardToAdmin = (ctx) => {
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-bot.start((ctx) => ctx.reply(`Добро пожаловать ${isAdmin(ctx.message.from.id) ? replyText.helloAdmin : ctx.message.from.first_name }! Вас приветствует питомник луковичных Green Pato.
-`,getMainMenu()))
+// bot.start((ctx) => ctx.reply(
+// `Добро пожаловать ${isAdmin(ctx.message.from.id) ? replyText.helloAdmin : ctx.message.from.first_name }! Вас приветствует питомник луковичных Green Pato.`,
+// getMainMenu()))
+
+bot.command('start', async (ctx) => {
+            await ctx.reply(`${isAdmin(ctx.message.from.id) ? replyText.helloAdmin : ctx.message.from.first_name }! Вас приветствует питомник луковичных Green Pato.`);
+
+       setTimeout(async() => {
+            await ctx.reply('Здесь вы можете ознакомиться с нашим ассортиментом и актуальными ценами, разместить заказ или задать вопрос.')
+            
+        }, 1000);
+
+        setTimeout(async()=> {
+            await ctx.reply('Какой вопрос вас интересует?', getMainMenu())
+        }, 3500)
+        
+      
+    } 
+)
+
+bot.command
+
+
 bot.help((ctx) => ctx.reply(text.commands))
 
 // Если вызывать меню по команде /ask
