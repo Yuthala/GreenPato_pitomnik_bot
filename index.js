@@ -12,7 +12,7 @@ let config = {
 // Текстовые настройки
 let replyText = {
     "helloAdmin": "Привет админ, ждем сообщения от пользователей",
-    "helloUser":  "Приветствую, отправьте мне сообщение. Постараюсь ответить в ближайшее время.",
+    "helloUser":  "Здесь вы можете ознакомиться с нашим ассортиментом и актуальными ценами, разместить заказ или задать вопрос.",
     "replyWrong": "Для ответа пользователю используйте функцию Ответить/Reply."
 };
 
@@ -32,7 +32,8 @@ let forwardToAdmin = (ctx) => {
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-bot.start((ctx) => ctx.reply(`Добро пожаловать ${isAdmin(ctx.message.from.id) ? replyText.helloAdmin : ctx.message.from.first_name }! Какой вопрос вас интересует?`,getMainMenu()))
+bot.start((ctx) => ctx.reply(`Добро пожаловать ${isAdmin(ctx.message.from.id) ? replyText.helloAdmin : ctx.message.from.first_name }! Вас приветствует питомник луковичных Green Pato.
+`,getMainMenu()))
 bot.help((ctx) => ctx.reply(text.commands))
 
 // Если вызывать меню по команде /ask
@@ -40,13 +41,12 @@ bot.help((ctx) => ctx.reply(text.commands))
         try {
        await ctx.replyWithHTML('<b>Вопросы</b>', Markup.inlineKeyboard(
             [
-                [Markup.button.callback('Аренда не завершилась', 'btn_1')],
-                [Markup.button.callback('Депозит не вернулся', 'btn_2')],
-                [Markup.button.callback('Тарифы и условия аренды(Частые вопросы)', 'btn_3')],
-                [Markup.button.callback('Сотрудничество', 'btn_4')],
-                [Markup.button.callback('Аккумулятор не заряжает', 'btn_5')],
-                [Markup.button.callback('Аккумулятор не вышел из слота', 'btn_6')],
-                [Markup.button.callback('Аккумулятор увезен/утерян/украден', 'btn_7')]
+                [Markup.button.callback('Предзаказ на 2025', 'btn_1')],
+                [Markup.button.callback('Чеснок', 'btn_2')],
+                [Markup.button.callback('Лук', 'btn_3')],
+                [Markup.button.callback('Шалот', 'btn_4')],
+                [Markup.button.callback('Доставка и оплата', 'btn_5')],
+                [Markup.button.callback('Написать сообщение', 'btn_6')]
             ]
         ))
     
@@ -74,13 +74,12 @@ bot.on('message', (ctx) => {
     function getMainMenu() {
         return Markup.inlineKeyboard(
             [
-                [Markup.button.callback('Аренда не завершилась', 'btn_1')],
-                [Markup.button.callback('Депозит не вернулся', 'btn_2')],
-                [Markup.button.callback('Тарифы и условия аренды(Частые вопросы)', 'btn_3')],
-                [Markup.button.callback('Сотрудничество', 'btn_4')],
-                [Markup.button.callback('Аккумулятор не заряжает', 'btn_5')],
-                [Markup.button.callback('Аккумулятор не вышел из слота', 'btn_6')],
-                [Markup.button.callback('Аккумулятор увезен/утерян/украден', 'btn_7')]
+                [Markup.button.callback('Предзаказ на 2025', 'btn_1')],
+                [Markup.button.callback('Чеснок', 'btn_2')],
+                [Markup.button.callback('Лук', 'btn_3')],
+                [Markup.button.callback('Шалот', 'btn_4')],
+                [Markup.button.callback('Доставка и оплата', 'btn_5')],
+                [Markup.button.callback('Написать сообщение', 'btn_6')]
             ]
         )
     }
@@ -106,6 +105,9 @@ function addActionBot(name, src, text) {
 addActionBot('btn_1',false, text.btn_1Text)
 addActionBot('btn_2',false, text.btn_2Text)
 addActionBot('btn_3',false, text.btn_3Text)
+addActionBot('btn_3',false, text.btn_4Text)
+addActionBot('btn_3',false, text.btn_5Text)
+addActionBot('btn_3',false, text.btn_6Text)
 
 bot.launch()
 
