@@ -132,6 +132,7 @@ function addActionBot(name, src, text) {
     })
 }
 
+// Действие по нажитии первой кнопки "Предзаказ на 2025"
 function btn_1Action(name,text) {
 bot.action(name, async (ctx) => {
     try {
@@ -142,10 +143,68 @@ bot.action(name, async (ctx) => {
 })
 }
 
+// Действие при нажитии второй кнопки "Чеснок"
+function btn_2Action(name, text) {
+    bot.action(name, async (ctx) => {
+        try {
+            // msg 1
+            await ctx.reply(text)
+            // msg 2
+            setTimeout(async() => {   
+            await ctx.reply(`
+                Чеснок посадочный головками:
+                Калибр 6+: 570 р/кг
+                Калибр 4-6: 490 р/кг
+                Сорта: Любаша, Богатырь`)
+            }, 1000)
+            //msg 3
+            setTimeout(async() => {
+            await ctx.reply(`
+                Однозубок чеснока:
+                Крупный - 1 400 р/кг
+                Средний - 1 200 р/кг
+                Мелкий - 900 р/кг
+                Сорта: Любаша`)
+        }, 2000)
+            // msg 4
+            setTimeout(async() => {
+            await ctx.reply(`
+                Воздушные луковицы (бульбочка):
+                Отборная - 3 500 р/кг
+                Калиброванная 5-8 мм - 3 000 р/кг
+                Сорта: Любаша, Богатырь, Шадейка, Григорий Комаров`,
+                 makeOrderButton())
+        }, 3000)
+        } catch (e) {
+            console.log(e)
+        }
+    })
+}
+
+// Действие при нажатии третьей кнопки "лук"
+function btn_3Action(name, text) {
+    bot.action(name, async (ctx) => {
+        try {
+            await ctx.reply(text)
+            setTimeout(async() => {
+            await ctx.reply(`
+            Семена (чернушка):
+                50 р/100 шт
+                Сорта: Ред Барон, Кармен, Штутгартер Ризен`,
+                 makeOrderButton())
+            }, 1000)
+        } catch (e) {
+            console.log(e)
+        }
+    })
+}
+
 //addActionBot('btn_1',false, text.btn_1Text)
 btn_1Action('btn_1',text.btn_1Text)
-addActionBot('btn_2',false, text.btn_2Text)
-addActionBot('btn_3',false, text.btn_3Text)
+//addActionBot('btn_2',false, text.btn_2Text)
+btn_2Action(`btn_2`,text.btn_2Text)
+//addActionBot('btn_3',false, text.btn_3Text)
+btn_3Action('btn_3',text.btn_3Text)
 addActionBot('btn_4',false, text.btn_4Text)
 addActionBot('btn_5',false, text.btn_5Text)
 addActionBot('btn_6',false, text.btn_6Text)
